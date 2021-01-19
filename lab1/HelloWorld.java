@@ -3,3 +3,6 @@ public class HelloWorld {
         System.out.println("Hello world!");
     }
 }
+/** .class file has been type checked
+ *  .class file are simpler for compiler
+ */

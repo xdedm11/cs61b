@@ -86,7 +86,9 @@ public class IntList {
 //          }
 //          A.rest=dcatenate(A.rest,B);
 //          return A;
-
+        if (A==null){
+            return B;
+        }
         IntList p = A;
         while (p.rest!=null){
             p=p.rest;

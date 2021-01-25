@@ -29,7 +29,7 @@ public class NBody {
     }
     
     /** Drawing the Initial Universe State */
-    public static void drawBackground(double radius) {
+    private static void drawBackground(double radius) {
         String imageBackground = "./images/starfield.jpg";
         StdDraw.setScale(-radius, radius);
 		StdDraw.clear();

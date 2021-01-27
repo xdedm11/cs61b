@@ -48,17 +48,38 @@ public class SLList<Item> implements List61B<Item> {
 
     @Override
     public Item getLast() {
-        return null;
+        IntNode p = sentinel;
+        while (p.next != null) {
+            p = p.next;
+        }
+        return p.item;
     }
 
     @Override
     public Item removeLast() {
-        return null;
+        Item x = getLast();
+        if (size == 0) {
+            return null;
+        }
+        IntNode p = sentinel;
+        while (p.next.next != null) {
+            p = p.next;
+        }
+        p.next = null;
+        size--;
+        return x;
     }
 
     @Override
     public Item get(int i) {
-        return null;
+        if (i >= size) {
+            return null;
+        }
+        IntNode p = sentinel.next;
+        for (int j = 0; j < i; j++) {
+            p = p.next;
+        }
+        return p.item;
     }
 
     @Override

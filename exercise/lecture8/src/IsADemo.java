@@ -4,6 +4,9 @@ public class IsADemo {
         somelist.addFirst("elk");
         somelist.addFirst("fx");
 //        System.out.println(somelist.getFirst());
+        System.out.println(somelist.getLast());
+        System.out.println(somelist.get(0));
+        System.out.println(somelist.removeLast());
         somelist.print();
     }
 }

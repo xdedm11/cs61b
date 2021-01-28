@@ -5,7 +5,7 @@ import java.util.Formatter;
  * with a large number of additional methods.
  *
  * @author P. N. Hilfinger, with some modifications by Josh Hug and melaniecebula
- *         [Do not modify this file.]
+ * [Do not modify this file.]
  */
 public class IntList {
     /**
@@ -29,7 +29,7 @@ public class IntList {
      * A List with null rest, and first = 0.
      */
     public IntList() {
-    /* NOTE: public IntList () { }  would also work. */
+        /* NOTE: public IntList () { }  would also work. */
         this(0, null);
     }
 
@@ -86,12 +86,12 @@ public class IntList {
 //          }
 //          A.rest=dcatenate(A.rest,B);
 //          return A;
-        if (A==null){
+        if (A == null) {
             return B;
         }
         IntList p = A;
-        while (p.rest!=null){
-            p=p.rest;
+        while (p.rest != null) {
+            p = p.rest;
         }
         p.rest = B;
         return A;
@@ -102,10 +102,10 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        if (A==null){
+        if (A == null) {
             return B;
         }
-        return new IntList(A.first,catenate(A.rest,B));
+        return new IntList(A.first, catenate(A.rest, B));
     }
 
     /**
@@ -113,24 +113,24 @@ public class IntList {
      * This method is destructive. If given null
      * as an input, returns null.
      */
-    public static IntList reverse(IntList A){
-
-        return null;
+    public static IntList reverse(IntList A) {
+        if (A.rest == null) {
+            return A;
+        }
+        IntList p = A.rest;
+        IntList left = A;
+        IntList right;
+        A.rest = null;
+        while (p.rest != null) {
+            right = p.rest;
+            p.rest = left;
+            left = p;
+            p = right;
+        }
+        p.rest = left;
+        A = p;
+        return A;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     /**

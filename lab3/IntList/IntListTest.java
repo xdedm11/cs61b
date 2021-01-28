@@ -71,10 +71,13 @@ public class IntListTest {
         IntList A = IntList.of(1, 2, 3, 4);
 //        IntList.reverse(A);
         IntList B = new IntList();
+        IntList C = null;
         IntList expA = IntList.of(4, 3, 2, 1);
         IntList expB = new IntList();
+        IntList expC = null;
         assertEquals(expA, IntList.reverse(A));
         assertEquals(expB, IntList.reverse(B));
+        assertEquals(expC, IntList.reverse(C));
     }
 
     /** If you're running this from the command line, you'll need

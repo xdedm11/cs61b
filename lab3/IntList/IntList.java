@@ -114,7 +114,7 @@ public class IntList {
      * as an input, returns null.
      */
     public static IntList reverse(IntList A) {
-        if (A.rest == null || A == null) {
+        if (A == null || A.rest == null) {
             return A;
         }
         IntList p = A.rest;
@@ -131,6 +131,12 @@ public class IntList {
         A = p;
         return A;
     }
+
+
+
+
+
+
 
 
     /**

@@ -6,7 +6,7 @@ public class DogLauncher {
         Dog d2 = new Dog("Strure", 9);
         Dog[] dogs = {d1, d2};
         Dog maxDog = (Dog) Maximizer.max(dogs);
-//        maxDog.bark();
+        maxDog.bark();
 
         Comparator<Dog> nc = Dog.getNameComparator();
         if (nc.compare(d1, d2) > 0){

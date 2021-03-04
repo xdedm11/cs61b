@@ -1,10 +1,10 @@
-public class LinkedListDeque<Item> {
+public class LinkedListDeque<T> {
     private class IntNode {
-        public Item item;
-        public IntNode next;
-        public IntNode last;
+        private T item;
+        private IntNode next;
+        private IntNode last;
 
-        public IntNode(Item i, IntNode n, IntNode l) {
+        public IntNode(T i, IntNode n, IntNode l) {
             item = i;
             next = n;
             last = l;
@@ -25,7 +25,7 @@ public class LinkedListDeque<Item> {
         size = 0;
     }
 
-    public LinkedListDeque(Item x) {
+    public LinkedListDeque(T x) {
         firstsentinel = new IntNode(null, null, null);
         lastsentinel = new IntNode(null, null, null);
         firstsentinel.next = new IntNode(x, lastsentinel, firstsentinel);
@@ -36,7 +36,7 @@ public class LinkedListDeque<Item> {
     /**
      * Adds x to the front of the list.
      */
-    public void addFirst(Item x) {
+    public void addFirst(T x) {
         IntNode temp = firstsentinel.next;
         firstsentinel.next = new IntNode(x, temp, firstsentinel);
         temp.last = firstsentinel.next;
@@ -46,7 +46,7 @@ public class LinkedListDeque<Item> {
     /**
      * Adds an item to the end of the list.
      */
-    public void addLast(Item x) {
+    public void addLast(T x) {
         IntNode temp = lastsentinel.last;
         lastsentinel.last = new IntNode(x, lastsentinel, temp);
         temp.next = lastsentinel.last;
@@ -68,11 +68,11 @@ public class LinkedListDeque<Item> {
         System.out.println();
     }
 
-    public Item removeFirst() {
+    public T removeFirst() {
         if (isEmpty()) {
             return null;
         }
-        Item value = firstsentinel.next.item;
+        T value = firstsentinel.next.item;
         IntNode temp = firstsentinel.next.next;
         firstsentinel.next = temp;
         temp.last = firstsentinel;
@@ -80,11 +80,11 @@ public class LinkedListDeque<Item> {
         return value;
     }
 
-    public Item removeLast() {
+    public T removeLast() {
         if (isEmpty()) {
             return null;
         }
-        Item value = lastsentinel.last.item;
+        T value = lastsentinel.last.item;
         IntNode temp = lastsentinel.last.last;
         lastsentinel.last = temp;
         temp.next = lastsentinel;
@@ -92,7 +92,7 @@ public class LinkedListDeque<Item> {
         return value;
     }
 
-    public Item get(int i) {
+    public T get(int i) {
         if (i >= size || i < 0) {
             return null;
         }
@@ -103,14 +103,14 @@ public class LinkedListDeque<Item> {
         return p.item;
     }
 
-    public Item getRecursive(int i) {
+    public T getRecursive(int i) {
         if (i >= size || i < 0) {
             return null;
         }
         return getRecursiveHelper(firstsentinel.next, i);
     }
 
-    private Item getRecursiveHelper(IntNode node, int i) {
+    private T getRecursiveHelper(IntNode node, int i) {
         if (i == 0) {
             return node.item;
         }

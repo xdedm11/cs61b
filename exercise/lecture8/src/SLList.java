@@ -1,7 +1,7 @@
 public class SLList<Item> implements List61B<Item> {
     private class IntNode {
-        public Item item;
-        public IntNode next;
+        private Item item;
+        private IntNode next;
 
         public IntNode(Item i, IntNode n) {
             item = i;

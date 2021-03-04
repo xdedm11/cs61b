@@ -1,0 +1,123 @@
+public class ArrayDeque<T> {
+    private T[] items;
+    private int size;
+    private int nextFirst;
+    private int nextLast;
+    private int capacity;
+    private int firsttime;
+    private int lasttime;
+
+    public ArrayDeque() {
+        items = (T[]) new Object[8];
+        capacity = 8;
+        nextFirst = 0;
+        nextLast = 1;
+        size = 0;
+        firsttime = 0;
+        lasttime = 0;
+    }
+
+    private int plusposition(int i) {
+        if (i == items.length - 1) {
+            i = 0;
+        } else {
+            i++;
+        }
+        return i;
+    }
+
+    private int minusposition(int i) {
+        if (i == 0) {
+            i = items.length - 1;
+        } else {
+            i--;
+        }
+        return i;
+    }
+
+    private void resize(int capacity) {
+        if (isFull()) {
+            T[] a = (T[]) new Object[capacity];
+            System.arraycopy(items, 0, a, 0, nextFirst + 1);
+            System.arraycopy(items, nextLast, a,
+                    capacity - size + nextLast, size - nextLast);
+            items = a;
+            this.capacity = capacity;
+        }
+    }
+
+    public void addFirst(T item) {
+        if (isFull()) {
+            resize(size * 2);
+            nextFirst = plusposition(nextFirst);
+        }
+        items[nextFirst] = item;
+        nextFirst = minusposition(nextFirst);
+        size++;
+        firsttime++;
+    }
+
+    public void addLast(T item) {
+        if (isFull()) {
+            resize(size * 2);
+            nextLast = minusposition(nextLast);
+        }
+        items[nextLast] = item;
+        nextLast = plusposition(nextLast);
+        size++;
+        lasttime++;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    private boolean isFull() {
+        return size == items.length;
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public void printDeque() {
+        for (int i = nextFirst + 1, j = 0; j <= size; i++, j++) {
+            if (i == (items.length)) {
+                i = 0;
+            }
+            System.out.print(items[i] + " ");
+        }
+        System.out.println();
+    }
+
+    public T removeFirst() {
+        if (isEmpty()) {
+            return null;
+        }
+        int position = plusposition(nextFirst);
+        T value = items[position];
+        items[position] = null;
+        nextFirst = position;
+        size--;
+        firsttime--;
+        return value;
+    }
+
+    public T removeLast() {
+        if (isEmpty()) {
+            return null;
+        }
+        int position = minusposition(nextLast);
+        T value = items[position];
+        items[position] = null;
+        nextLast = position;
+        size--;
+        lasttime--;
+        return value;
+    }
+
+    public T get(int index) {
+        int position = (lasttime - firsttime + index) % capacity;
+        return items[position];
+    }
+}

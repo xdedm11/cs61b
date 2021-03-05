@@ -75,7 +75,7 @@ public class ArrayDequeTest {
         assertEquals(9, actualFirst);
         assertEquals(0, actualLast);
 
-        for (int i = 10; i < 100; i++) {
+        for (int i = 10; i < 20; i++) {
             q.addLast(i);
         }
         actualLast = q.get(99);

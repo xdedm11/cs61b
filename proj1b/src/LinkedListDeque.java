@@ -1,8 +1,8 @@
 public class LinkedListDeque<Item> implements Deque<Item> {
     private class IntNode {
-        public Item item;
-        public IntNode next;
-        public IntNode last;
+        private Item item;
+        private IntNode next;
+        private IntNode last;
 
         public IntNode(Item i, IntNode n, IntNode l) {
             item = i;
@@ -37,9 +37,9 @@ public class LinkedListDeque<Item> implements Deque<Item> {
      * Adds x to the front of the list.
      */
     @Override
-    public void addFirst(Item x) {
+    public void addFirst(Item item) {
         IntNode temp = firstsentinel.next;
-        firstsentinel.next = new IntNode(x, temp, firstsentinel);
+        firstsentinel.next = new IntNode(item, temp, firstsentinel);
         temp.last = firstsentinel.next;
         size++;
     }
@@ -48,9 +48,9 @@ public class LinkedListDeque<Item> implements Deque<Item> {
      * Adds an item to the end of the list.
      */
     @Override
-    public void addLast(Item x) {
+    public void addLast(Item item) {
         IntNode temp = lastsentinel.last;
-        lastsentinel.last = new IntNode(x, lastsentinel, temp);
+        lastsentinel.last = new IntNode(item, lastsentinel, temp);
         temp.next = lastsentinel.last;
         size++;
     }
@@ -100,22 +100,22 @@ public class LinkedListDeque<Item> implements Deque<Item> {
     }
 
     @Override
-    public Item get(int i) {
-        if (i >= size || i < 0) {
+    public Item get(int index) {
+        if (index >= size || index < 0) {
             return null;
         }
         IntNode p = firstsentinel.next;
-        for (int j = 0; j < i; j++) {
+        for (int j = 0; j < index; j++) {
             p = p.next;
         }
         return p.item;
     }
 
-    public Item getRecursive(int i) {
-        if (i >= size || i < 0) {
+    public Item getRecursive(int index) {
+        if (index >= size || index < 0) {
             return null;
         }
-        return getRecursiveHelper(firstsentinel.next, i);
+        return getRecursiveHelper(firstsentinel.next, index);
     }
 
     private Item getRecursiveHelper(IntNode node, int i) {

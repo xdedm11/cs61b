@@ -1,7 +1,5 @@
 package synthesizer;
 
-import synthesizer.BoundedQueue;
-
 //Make sure this class is public
 public class GuitarString {
     /**
